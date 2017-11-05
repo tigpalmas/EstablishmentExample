@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppThemeBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryBar</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkBar</item>
+        <item name="colorAccent">@color/colorAccentBar</item>
+    </style>
+
+    <style name="AppThemeRestaurant" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryRestaurant</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkRestaurant</item>
+        <item name="colorAccent">@color/colorAccentRestaurant</item>
+    </style>
+
+
+    <style name="txt_loading_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+</resources>

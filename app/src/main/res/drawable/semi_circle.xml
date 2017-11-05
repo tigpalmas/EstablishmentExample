@@ -1,0 +1,10 @@
+<shape xmlns:android="http//schemas.android.com/apk/res/android"
+    android:shape="semicircle">
+    <solid android:background="@drawable/pizza1" />
+    <size android:width="60dp"
+        android:height="40dp" />
+</shape>
+
+
+
+

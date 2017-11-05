@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9C27B0</color>
+    <color name="colorPrimaryDark">#7B1FA2</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="yellow_color">#ffeb12</color>
+
+    <color name="green_light">#cddc37</color>
+    <color name="green_dark">#bfc933</color>
+    <color name="green_daker">#aeb435</color>
+    <color name="almost_darki">#212121</color>
+    <color name="color_white">#FFFFFF</color>
+
+    <color name="colorPrimaryBar">#212121</color>
+    <color name="colorPrimaryDarkBar">#000000</color>
+    <color name="colorAccentBar">#e00b43</color>
+    <color name="background">#303030</color>
+    <color name="colorDarkgrey">#110d16</color>
+
+    <color name="dialog">#424242</color>
+
+
+    <color name="colorPrimaryRestaurant">#4CAF50</color>
+    <color name="colorPrimaryDarkRestaurant">#388E3C</color>
+    <color name="colorAccentRestaurant">#795548</color>
+
+</resources>
