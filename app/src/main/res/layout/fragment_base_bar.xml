@@ -4,18 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
-    >
+    android:fitsSystemWindows="false">
 
     <include layout="@layout/conent_bar_detail" />
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:fitsSystemWindows="false"
-       >
-
+        android:layout_height="300dp"
+        android:fitsSystemWindows="false">
 
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -27,21 +24,42 @@
             app:layout_scrollFlags="scroll|snap"
             app:titleEnabled="false">
 
-
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
                 <ImageView
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/balada"
                     android:id="@+id/iv_dancer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/balada" />
 
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="42dp"
+                    android:text="Seu Establecimento Online"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
 
+                <Button
+                    android:id="@+id/btn_orcamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView15"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="72dp"
+                    android:background="@drawable/borda_tag"
+                    android:text="Solicite um orçamento"
+                    android:textColor="@android:color/white" />
 
-
-
+            </RelativeLayout>
 
 
         </android.support.design.widget.CollapsingToolbarLayout>

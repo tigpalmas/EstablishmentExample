@@ -41,7 +41,7 @@ public class BaseBarFragment extends Fragment {
 
 
         viewPagerCasaDetalheAdapter.addFragments(new BarFragment(), "Programação");
-        viewPagerCasaDetalheAdapter.addFragments(new LocalizacaoFragment(), "Localização");
+        viewPagerCasaDetalheAdapter.addFragments(new MapFragment(), "Localização");
         viewPagerCasaDetalheAdapter.addFragments(new FotosFragment(), "Comentários");
 
         viewPager.setAdapter(viewPagerCasaDetalheAdapter);
