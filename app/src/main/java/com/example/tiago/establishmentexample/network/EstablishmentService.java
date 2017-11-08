@@ -1,8 +1,9 @@
 package com.example.tiago.establishmentexample.network;
 
 import com.example.tiago.establishmentexample.domain.Contato;
+import com.example.tiago.establishmentexample.domain.MessagePush;
+import com.example.tiago.establishmentexample.domain.Push;
 import com.example.tiago.establishmentexample.domain.Order;
-import com.example.tiago.establishmentexample.domain.OrderRetrofit;
 import com.example.tiago.establishmentexample.product.Product;
 import com.example.tiago.establishmentexample.promotionalListRecycler.Promotion;
 
@@ -10,13 +11,9 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-
-import static android.R.attr.order;
 
 /**
  * Created by tiago on 09/10/2017.
@@ -45,6 +42,12 @@ public interface EstablishmentService {
 
     @POST("/contact")
     Call<Contato> postContact(@Body Contato contato);
+
+    @POST("/push/register")
+    Call<Push> regsterPush(@Body Push oneSignal);
+
+    @POST("/push/send-message")
+    Call<MessagePush> sendPushMessage(@Body MessagePush push);
 
 
     @Headers("Content-Type: application/json")

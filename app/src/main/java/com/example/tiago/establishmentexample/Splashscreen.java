@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -15,15 +16,32 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.tiago.establishmentexample.domain.ErrorModel;
+import com.example.tiago.establishmentexample.domain.ErrorUtils;
+import com.example.tiago.establishmentexample.domain.MessagePush;
+import com.example.tiago.establishmentexample.domain.Push;
+import com.example.tiago.establishmentexample.domain.Tags;
+import com.example.tiago.establishmentexample.network.EstablishmentProvider;
+import com.example.tiago.establishmentexample.network.EstablishmentService;
+import com.example.tiago.establishmentexample.product.MVP;
+import com.example.tiago.establishmentexample.utils.AppPreferenceTools;
+import com.onesignal.OSPermissionSubscriptionState;
+import com.onesignal.OneSignal;
+
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 public class Splashscreen extends Activity {
+    private AppPreferenceTools mAppPreferenceTools;
     private Button btnLogin, btnSignUp;
     private Button btnFacebook;
     private TextView txtDescriptionface, txtLinkTermos;
@@ -35,6 +53,10 @@ public class Splashscreen extends Activity {
     private Button btnShop;
     private Button btnBar;
     private Button btnPizzaria;
+    private Button btnSendPush;
+
+    private EstablishmentService mTService;
+    private MVP.PresenterProduct mPresenter;
 
 
 
@@ -48,11 +70,13 @@ public class Splashscreen extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
+        mAppPreferenceTools = new AppPreferenceTools(this);
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         btnRestaurant = (Button) findViewById(R.id.btn_restaurant);
         btnShop = (Button) findViewById(R.id.btn_shop);
         btnBar = (Button) findViewById(R.id.btn_bar);
         btnPizzaria = (Button) findViewById(R.id.btn_pizzaria);
+        btnSendPush = (Button) findViewById(R.id.btn_sendPush);
 
         btnRestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +123,12 @@ public class Splashscreen extends Activity {
             }
         });
 
+        btnSendPush.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendMessage();
+            }
+        });
 
 
         animations.add("https://media.giphy.com/media/TO200GkRbqqXe/giphy.gif");
@@ -110,7 +140,15 @@ public class Splashscreen extends Activity {
 
 
 
+
         startAnimation((RelativeLayout) findViewById(R.id.lin_lay), (ImageView) findViewById(R.id.splash));
+
+        if(!mAppPreferenceTools.isAlreadyRegisterOneSinal()){
+            getOneSignalId();
+        }
+
+
+
 
     }
 
@@ -150,6 +188,69 @@ public class Splashscreen extends Activity {
 
         };
         splashTread.start();
+    }
+
+    public void getOneSignalId(){
+        OSPermissionSubscriptionState status = OneSignal.getPermissionSubscriptionState();
+        status.getPermissionStatus().getEnabled();
+       String id  = status.getSubscriptionStatus().getUserId();
+        registerPush(id);
+    }
+
+    private void registerPush(String oneSignalId){
+        EstablishmentProvider provider  = new EstablishmentProvider();
+        mTService = provider.getmService();
+        Tags tags =new Tags();
+        tags.tag1 = "testeAndroid";
+        tags.establishment = "restaurant";
+
+        Push push = new Push();
+        push.tags = tags;
+        push.oneSignalId = oneSignalId;
+
+        Call<Push> call = mTService.regsterPush(push);
+        call.enqueue(new Callback<Push>() {
+            @Override
+            public void onResponse(Call<Push> call, Response<Push> response) {
+                if(response.isSuccess()){
+                    Log.i("teste", "sucesso");
+                }else{
+                    Log.i("teste", "erro");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Push> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void sendMessage(){
+        EstablishmentProvider provider  = new EstablishmentProvider();
+        mTService = provider.getmService();
+
+        MessagePush push = new MessagePush();
+        push.key = "testeAndroid";
+        push.value = "restaurant";
+        push.message = "vai que vai";
+
+        Call<MessagePush> call = mTService.sendPushMessage(push);
+        call.enqueue(new Callback<MessagePush>() {
+            @Override
+            public void onResponse(Call<MessagePush> call, Response<MessagePush> response) {
+                if(response.isSuccess()){
+                    Log.i("teste", "sucesso");
+                }else{
+                    Log.i("teste", "erro");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MessagePush> call, Throwable t) {
+
+            }
+        });
     }
 
 

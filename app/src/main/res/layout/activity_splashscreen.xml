@@ -60,11 +60,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView6"
-        android:layout_marginTop="17dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="7dp"
         android:layout_toEndOf="@+id/splash"
         android:layout_toRightOf="@+id/splash"
         android:gravity="center"
-        android:text="Seu estabelecimento na mão de seus clientes"
+        android:text="Seu estabelecimento ou seu evento na mão de seus clientes"
         android:textColor="#FFFFFF"
         android:textSize="16dip"
         android:textStyle="bold" />
@@ -109,9 +110,9 @@
         android:layout_alignStart="@+id/btn_restaurant"
         android:layout_below="@+id/btn_restaurant"
         android:layout_marginTop="33dp"
-        android:textAllCaps="false"
         android:background="@drawable/borda_tag"
-        android:text="Pizzaria"
+        android:text="Seu Casamento"
+        android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
 
@@ -151,6 +152,15 @@
         android:text="(41) 99853-2551"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_sendPush"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/btn_bar"
+        android:layout_toStartOf="@+id/btn_bar"
+        android:text="Button" />
 
 
 </RelativeLayout>

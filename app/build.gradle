@@ -1,4 +1,15 @@
+
+plugins {
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin' version '0.7.0'
+}
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
+repositories {
+    maven { url 'https://maven.google.com' }
+}
+
 apply plugin: 'com.android.application'
+
 
 android {
     compileSdkVersion 26
@@ -11,6 +22,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        manifestPlaceholders = [onesignal_app_id               : "1027a155-ab41-471c-9f71-c623d58046f1",
+                                // Project number pulled from dashboard, local value is ignored.
+                                onesignal_google_project_number: "REMOTE"]
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -19,6 +34,7 @@ android {
         }
     }
 }
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -52,6 +68,10 @@ dependencies {
     compile 'br.com.jansenfelipe:androidmask:1.0.1'
     compile 'com.android.support:support-v4:26.+'
     compile 'com.google.android.gms:play-services-maps:10.2.6'
+    compile 'com.onesignal:OneSignal:[3.6.5, 3.99.99]'
+
+
+
     testCompile 'junit:junit:4.12'
 }
 
