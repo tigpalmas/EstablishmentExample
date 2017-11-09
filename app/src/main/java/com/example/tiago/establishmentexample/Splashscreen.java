@@ -58,6 +58,8 @@ public class Splashscreen extends Activity {
     private EstablishmentService mTService;
     private MVP.PresenterProduct mPresenter;
 
+    private String oneSignalId;
+
 
 
     public void onAttachedToWindow() {
@@ -105,14 +107,7 @@ public class Splashscreen extends Activity {
             }
         });
 
-        btnBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivityBar.class);
-                intent.putExtra("from", "bar");
-                startActivity(intent);
-            }
-        });
+
 
         btnPizzaria.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,16 +188,17 @@ public class Splashscreen extends Activity {
     public void getOneSignalId(){
         OSPermissionSubscriptionState status = OneSignal.getPermissionSubscriptionState();
         status.getPermissionStatus().getEnabled();
-       String id  = status.getSubscriptionStatus().getUserId();
-        registerPush(id);
+        oneSignalId  = status.getSubscriptionStatus().getUserId();
+        registerPush(oneSignalId);
     }
 
     private void registerPush(String oneSignalId){
         EstablishmentProvider provider  = new EstablishmentProvider();
         mTService = provider.getmService();
         Tags tags =new Tags();
-        tags.tag1 = "testeAndroid";
-        tags.establishment = "restaurant";
+        tags.tag1 = oneSignalId;
+        tags.establishment= "restaurant";
+
 
         Push push = new Push();
         push.tags = tags;
@@ -231,8 +227,8 @@ public class Splashscreen extends Activity {
         mTService = provider.getmService();
 
         MessagePush push = new MessagePush();
-        push.key = "testeAndroid";
-        push.value = "restaurant";
+        push.key = "tag1";
+        push.value = oneSignalId;
         push.message = "vai que vai";
 
         Call<MessagePush> call = mTService.sendPushMessage(push);
