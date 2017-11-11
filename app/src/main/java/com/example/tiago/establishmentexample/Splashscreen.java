@@ -235,7 +235,7 @@ public class Splashscreen extends Activity {
         MessagePush push = new MessagePush();
         push.key = "tag1";
         push.value = oneSignalId;
-        push.message = "vai que vai";
+        push.message = "Mensagem Teste";
 
         Call<MessagePush> call = mTService.sendPushMessage(push);
         call.enqueue(new Callback<MessagePush>() {
