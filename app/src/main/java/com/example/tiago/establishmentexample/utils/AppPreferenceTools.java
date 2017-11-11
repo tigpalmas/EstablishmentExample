@@ -25,13 +25,27 @@ public class AppPreferenceTools {
 
 
 
-    public void alreadyRegisterOneSinal(boolean status){
+    public void registerPush(boolean status, String oneSignalId){
         mPreference.edit()
-                .putBoolean("status", status).apply();
+                .putBoolean("status", status)
+                .putString("oneSignalId", oneSignalId)
+                .apply();
+
     }
 
     public boolean isAlreadyRegisterOneSinal(){
         return    mPreference.getBoolean("status", false);
+    }
 
+    public void saveOrder(String orderId){
+        mPreference.edit().putString("orderNumber", orderId);
+    }
+
+    public void getOrder(){
+        mPreference.getString("orderNumber", null);
+    }
+
+    public String getOneSignalId(){
+        return mPreference.getString("oneSignalId", null);
     }
 }

@@ -8,6 +8,15 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     >
 
+    <FrameLayout
+        android:id="@+id/containerMap"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@+id/toolbarRestaurant">
+
+
+    </FrameLayout>
+
 
 
 

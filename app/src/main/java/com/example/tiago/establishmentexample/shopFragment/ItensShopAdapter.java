@@ -1,6 +1,7 @@
 package com.example.tiago.establishmentexample.shopFragment;
 
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.tiago.establishmentexample.R;
+import com.example.tiago.establishmentexample.diagoFragment.DialogFragment;
 import com.example.tiago.establishmentexample.product.Image;
 import com.example.tiago.establishmentexample.product.Product;
 
@@ -95,12 +97,17 @@ public class ItensShopAdapter extends RecyclerView.Adapter<ItensShopAdapter.MyVi
         public MyViewHolder(View itemView, Context ctx, List<Product> products) {
             super(itemView);
             imgItem = (ImageView) itemView.findViewById(R.id.img_item);
+            itemView.setOnClickListener(this);
         }
 
 
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();
+            Product product = mProducts.get(position);
+            DialogFragment fragment = DialogFragment.novaInstancia(product);
+            FragmentTransaction fragmentTransaction =  ((FragmentActivity)c).getSupportFragmentManager().beginTransaction();
+            fragment.show(fragmentTransaction, "dialog");
 
 
         }

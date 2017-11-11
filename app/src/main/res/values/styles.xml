@@ -15,6 +15,16 @@
         <item name="colorAccent">@color/colorAccentBar</item>
     </style>
 
+    <style name="AppThemeWedding" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+
+
     <style name="AppThemeRestaurant" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryRestaurant</item>

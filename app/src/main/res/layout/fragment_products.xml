@@ -16,6 +16,8 @@
         android:text="Carregando Cardápio"
         style="@style/txt_loading_style"
         android:id="@+id/txt_loading_cardapio"
+        android:textColor="@color/md_blue_grey_500"
+
         />
 
 

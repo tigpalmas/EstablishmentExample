@@ -7,7 +7,10 @@ package com.example.tiago.establishmentexample.domain;
 public class MessagePush {
     public String key;
     public String value;
+    public String title;
     public String message;
+    public String bigPictureURL;
+    public String largeIcon;
 }
 
 

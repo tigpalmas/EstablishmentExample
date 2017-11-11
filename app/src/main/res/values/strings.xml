@@ -6,7 +6,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_promotion">Promoções</string>
+    <string name="title_promotion">Novidades</string>
     <string name="title_products">Produtos</string>
     <string name="title_user">Você</string>
     <string name="empty_menu">Cardápio ainda não foi cadastrado</string>

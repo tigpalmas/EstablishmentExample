@@ -1,23 +1,17 @@
 package com.example.tiago.establishmentexample.barFragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.tiago.establishmentexample.EventActivity;
 import com.example.tiago.establishmentexample.R;
-import com.example.tiago.establishmentexample.product.Genre;
 import com.example.tiago.establishmentexample.product.Image;
 import com.example.tiago.establishmentexample.product.Product;
-import com.example.tiago.establishmentexample.shopFragment.ItensShopAdapter;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

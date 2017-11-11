@@ -1,4 +1,4 @@
-package com.example.tiago.establishmentexample.pizzaFragment;
+package com.example.tiago.establishmentexample.fragmentInformation;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.example.tiago.establishmentexample.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PizzaFragment extends Fragment {
+public class informationEnterpriseFragment extends Fragment {
 
 
-    public PizzaFragment() {
+    public informationEnterpriseFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class PizzaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pizza, container, false);
+        return inflater.inflate(R.layout.fragment_information_enterprise, container, false);
     }
 
 }

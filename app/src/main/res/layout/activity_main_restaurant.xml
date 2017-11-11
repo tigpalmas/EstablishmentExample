@@ -13,11 +13,23 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
 
-      />
+        />
+
 
     <FrameLayout
-        android:layout_below="@+id/toolbarRestaurant"
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarRestaurant">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            app:srcCompat="@drawable/ic_action_cart" />
+    </FrameLayout>
+
+
 </RelativeLayout>

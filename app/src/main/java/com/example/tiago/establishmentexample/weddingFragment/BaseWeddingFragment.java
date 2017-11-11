@@ -1,4 +1,4 @@
-package com.example.tiago.establishmentexample.barFragment;
+package com.example.tiago.establishmentexample.weddingFragment;
 
 
 import android.os.Bundle;
@@ -10,10 +10,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.example.tiago.establishmentexample.R;
+import com.example.tiago.establishmentexample.barFragment.BarFragment;
+import com.example.tiago.establishmentexample.barFragment.FotosFragment;
+import com.example.tiago.establishmentexample.barFragment.MapFragment;
+import com.example.tiago.establishmentexample.barFragment.ViewPagerCasaDetalheAdapter;
 import com.example.tiago.establishmentexample.domain.MessagePush;
 import com.example.tiago.establishmentexample.network.EstablishmentProvider;
 import com.example.tiago.establishmentexample.network.EstablishmentService;
@@ -27,7 +34,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BaseBarFragment extends Fragment {
+public class BaseWeddingFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerCasaDetalheAdapter viewPagerCasaDetalheAdapter;
@@ -37,23 +44,29 @@ public class BaseBarFragment extends Fragment {
     private EstablishmentService mTService;
     private MVP.PresenterProduct mPresenter;
 
+    Animation fade_in, fade_out;
+    ViewFlipper viewFlipper;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View layout =  inflater.inflate(R.layout.fragment_base_bar, container, false);
+        View layout =  inflater.inflate(R.layout.fragment_base_wedding, container, false);
         mAppPreferenceTools = new AppPreferenceTools(getContext());
         tabLayout = (TabLayout) layout.findViewById(R.id.tabs);
         viewPager = (ViewPager) layout.findViewById(R.id.viewPager);
-        btnPush = (Button) layout.findViewById(R.id.btn_orcamento);
+        viewFlipper = (ViewFlipper)layout.findViewById(R.id.bckgrndViewFlipper1);
 
-        btnPush.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendMessage();
-            }
-        });
+        fade_in = AnimationUtils.loadAnimation(getContext(), android.R.anim.fade_in);
+        fade_in = AnimationUtils.loadAnimation(getContext(), android.R.anim.fade_out);
+
+        viewFlipper.setInAnimation(fade_in);
+        viewFlipper.setOutAnimation(fade_out);
+        viewFlipper.setAutoStart(true);
+        viewFlipper.setFlipInterval(5000);
+        viewFlipper.startFlipping();
+
 
         return layout;
     }

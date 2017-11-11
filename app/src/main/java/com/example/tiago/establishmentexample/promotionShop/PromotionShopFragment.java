@@ -79,8 +79,8 @@ public class PromotionShopFragment extends Fragment implements MVPItens.ViewIten
 
     @Override
     public void updateListaRecycler(List<Promotion> promotions) {
-      /*  PromotionsFragmentListener activity = (PromotionsFragmentListener) getActivity();
-        activity.onReturnListPromotions(promotions);*/
+        PromotionsFragmentListener activity = (PromotionsFragmentListener) getActivity();
+     //   activity.onReturnListPromotions(promotions);
 
         viewPagerCoversAdapter = new ViewPagerCoversAdapter(getFragmentManager());
         for(Promotion cover: promotions){

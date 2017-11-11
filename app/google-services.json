@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "482775648697",
+    "firebase_url": "https://tickets-b3b4d.firebaseio.com",
+    "project_id": "tickets-b3b4d",
+    "storage_bucket": "tickets-b3b4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482775648697:android:144edee1063dc3ff",
+        "android_client_info": {
+          "package_name": "com.example.tiago.establishmentexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482775648697-ckflesf9vrud0g9mtbdm1q5suabjeh7j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tiago.establishmentexample",
+            "certificate_hash": "a8149f93b0731464793c703b54d6458441f22e33"
+          }
+        },
+        {
+          "client_id": "482775648697-vtqkd8p50j03ck6f88mveg2pfu6muc9r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjTk3OJpExzNtenFAW3lX35vTj34mQbb4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482775648697-vtqkd8p50j03ck6f88mveg2pfu6muc9r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

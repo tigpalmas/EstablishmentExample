@@ -26,6 +26,7 @@ import com.example.tiago.establishmentexample.diagoFragment.DialogFragment;
 import com.example.tiago.establishmentexample.domain.CartItem;
 import com.example.tiago.establishmentexample.domain.Order;
 import com.example.tiago.establishmentexample.promotionalListRecycler.ItemAdapter;
+import com.example.tiago.establishmentexample.userPerfilFragment.UserFragment;
 
 import java.util.List;
 
@@ -36,6 +37,7 @@ public class CartItemFragment extends Fragment implements MVPCartItens.ViewItens
     public static final String EXTRA_CARTITENS = "extra_cart_itens";
     private MVPCartItens.PresenterItens mPresenter;
     private Order mOrder;
+    private FragmentTransaction fragmentTransaction;
 
 
     private RecyclerView mRecyclerView;
@@ -150,9 +152,20 @@ public class CartItemFragment extends Fragment implements MVPCartItens.ViewItens
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    @Override
+    public void orderFinished() {
+        loadFragment(new UserFragment(), "userFragment");
+    }
+
     public void updateValues(){
         txtTotal.setText("R$ "+(mOrder.getTotal()+8.0f));
         txtTotalDiscount.setText("economizando R$ "+mOrder.getTotalDiscount());
+    }
 
+    private void loadFragment(Fragment fragment, String tag) {
+        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.container, fragment, tag);
+
+        fragmentTransaction.commitAllowingStateLoss();
     }
 }

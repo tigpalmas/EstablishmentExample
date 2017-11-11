@@ -56,7 +56,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="72dp"
                     android:background="@drawable/borda_tag"
-                    android:text="Solicite um orçamento"
+                    android:text="Notificar usuários? "
                     android:textColor="@android:color/white" />
 
             </RelativeLayout>
