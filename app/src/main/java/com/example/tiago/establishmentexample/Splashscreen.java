@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -189,10 +190,15 @@ public class Splashscreen extends Activity {
         OSPermissionSubscriptionState status = OneSignal.getPermissionSubscriptionState();
         status.getPermissionStatus().getEnabled();
         oneSignalId  = status.getSubscriptionStatus().getUserId();
-        registerPush(oneSignalId);
+        if(oneSignalId!=null && !oneSignalId.equals("")){
+            registerPush(oneSignalId);
+        }else{
+            Toast.makeText(this, "OneSignalId null", Toast.LENGTH_SHORT).show();
+        }
+     
     }
 
-    private void registerPush(String oneSignalId){
+    private void registerPush(final String oneSignalId){
         EstablishmentProvider provider  = new EstablishmentProvider();
         mTService = provider.getmService();
         Tags tags =new Tags();
@@ -209,7 +215,7 @@ public class Splashscreen extends Activity {
             @Override
             public void onResponse(Call<Push> call, Response<Push> response) {
                 if(response.isSuccess()){
-                    Log.i("teste", "sucesso");
+                   mAppPreferenceTools.registerOneSignal(true, oneSignalId);
                 }else{
                     Log.i("teste", "erro");
                 }
