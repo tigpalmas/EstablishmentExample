@@ -35,7 +35,7 @@ import com.example.tiago.establishmentexample.utils.BottomNavigationViewHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements
+public class MainActivityShop extends AppCompatActivity implements
         DialogFragment.MyDialogFragmentListener,
         DialogPromotionFragment.MyDialogFragmentListener,
         ShopFragment.ProductsFragmentListener,

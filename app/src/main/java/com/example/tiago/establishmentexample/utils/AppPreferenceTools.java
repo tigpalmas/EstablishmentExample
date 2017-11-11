@@ -27,9 +27,13 @@ public class AppPreferenceTools {
 
     public void registerOneSignal(boolean status, String oneSignalId){
         mPreference.edit()
-                .putBoolean("status", status).apply();
-        mPreference.edit()
-                .putString("oneSignalId",oneSignalId);
+                .putBoolean("status", status)
+                .putString("oneSignalId",oneSignalId)
+                .apply();
+    }
+
+    public String getOneSignalId(){
+        return mPreference.getString("oneSignalId",null);
     }
 
     public boolean isAlreadyRegisterOneSinal(){

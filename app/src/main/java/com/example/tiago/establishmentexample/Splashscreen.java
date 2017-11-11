@@ -15,10 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.tiago.establishmentexample.domain.ErrorModel;
-import com.example.tiago.establishmentexample.domain.ErrorUtils;
 import com.example.tiago.establishmentexample.domain.MessagePush;
 import com.example.tiago.establishmentexample.domain.Push;
 import com.example.tiago.establishmentexample.domain.Tags;
@@ -38,15 +34,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
-
 
 public class Splashscreen extends Activity {
     private AppPreferenceTools mAppPreferenceTools;
-    private Button btnLogin, btnSignUp;
-    private Button btnFacebook;
-    private TextView txtDescriptionface, txtLinkTermos;
-    private TextView txtEntry;
+    private EstablishmentService mTService;
+    private MVP.PresenterProduct mPresenter;
+
+
     private List<String> animations = new ArrayList<>();
     private Thread splashTread;
 
@@ -56,8 +50,7 @@ public class Splashscreen extends Activity {
     private Button btnPizzaria;
     private Button btnSendPush;
 
-    private EstablishmentService mTService;
-    private MVP.PresenterProduct mPresenter;
+
 
     private String oneSignalId;
 
@@ -79,7 +72,7 @@ public class Splashscreen extends Activity {
         btnShop = (Button) findViewById(R.id.btn_shop);
         btnBar = (Button) findViewById(R.id.btn_bar);
         btnPizzaria = (Button) findViewById(R.id.btn_pizzaria);
-        btnSendPush = (Button) findViewById(R.id.btn_sendPush);
+
 
         btnRestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +86,7 @@ public class Splashscreen extends Activity {
         btnShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivityShop.class);
                 intent.putExtra("from", "shop");
                 startActivity(intent);
             }
@@ -113,18 +106,12 @@ public class Splashscreen extends Activity {
         btnPizzaria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivityPizza.class);
+              /*  Intent intent = new Intent(getApplicationContext(), MainActivityPizza.class);
                 intent.putExtra("from", "pizza");
-                startActivity(intent);
+                startActivity(intent);*/
             }
         });
 
-        btnSendPush.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendMessage();
-            }
-        });
 
 
         animations.add("https://media.giphy.com/media/TO200GkRbqqXe/giphy.gif");
@@ -228,32 +215,7 @@ public class Splashscreen extends Activity {
         });
     }
 
-    private void sendMessage(){
-        EstablishmentProvider provider  = new EstablishmentProvider();
-        mTService = provider.getmService();
 
-        MessagePush push = new MessagePush();
-        push.key = "tag1";
-        push.value = oneSignalId;
-        push.message = "Mensagem Teste";
-
-        Call<MessagePush> call = mTService.sendPushMessage(push);
-        call.enqueue(new Callback<MessagePush>() {
-            @Override
-            public void onResponse(Call<MessagePush> call, Response<MessagePush> response) {
-                if(response.isSuccess()){
-                    Log.i("teste", "sucesso");
-                }else{
-                    Log.i("teste", "erro");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<MessagePush> call, Throwable t) {
-
-            }
-        });
-    }
 
 
 }

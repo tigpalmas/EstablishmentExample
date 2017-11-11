@@ -8,6 +8,9 @@ public class MessagePush {
     public String key;
     public String value;
     public String message;
+    public String title;
+    public String bigPictureURL;
+    public String largeIcon;
 }
 
 

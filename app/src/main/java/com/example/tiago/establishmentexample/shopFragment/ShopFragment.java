@@ -102,7 +102,10 @@ public class ShopFragment extends Fragment implements MVP.ViewShop{
     @Override
     public void updateListaRecycler(List<Genre> genres, List<Product> products) {
         ProductsFragmentListener activity = (ProductsFragmentListener) getActivity();
-        activity.onReturnListProducts(products);
+        if(activity!=null){
+            activity.onReturnListProducts(products);
+        }
+
 
         mAdapter = new ShopAdapter(getContext(), genres);
         mRecyclerView.setAdapter(mAdapter);
