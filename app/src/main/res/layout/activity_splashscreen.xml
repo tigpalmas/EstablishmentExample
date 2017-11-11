@@ -65,7 +65,7 @@
         android:layout_toEndOf="@+id/splash"
         android:layout_toRightOf="@+id/splash"
         android:gravity="center"
-        android:text="Seu estabelecimento ou seu evento na mão de seus clientes"
+        android:text="Seu estabelecimento/evento na mão de seus clientes"
         android:textColor="#FFFFFF"
         android:textSize="16dip"
         android:textStyle="bold" />
