@@ -20,8 +20,9 @@ public class PresenterCartItens implements MVPCartItens.PresenterItens {
 
 
     public PresenterCartItens( Context ctx) {
-        mModel = new ModelCartItens(this);
         this.ctx = ctx;
+        mModel = new ModelCartItens(this);
+
     }
 
     @Override
@@ -34,6 +35,11 @@ public class PresenterCartItens implements MVPCartItens.PresenterItens {
     @Override
     public void setView(MVPCartItens.ViewItens view) {
         mView = view;
+    }
+
+    @Override
+    public Context getContext() {
+        return this.ctx;
     }
 
     @Override

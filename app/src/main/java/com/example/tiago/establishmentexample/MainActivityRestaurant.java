@@ -9,9 +9,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.tiago.establishmentexample.PerfilFragment.PerfilFragment;
+import com.example.tiago.establishmentexample.diagoFragment.DialogFragment;
+import com.example.tiago.establishmentexample.diagoFragment.DialogPromotionFragment;
+import com.example.tiago.establishmentexample.domain.CartItem;
 import com.example.tiago.establishmentexample.product.ProductList;
 import com.example.tiago.establishmentexample.product.ProductsFragment;
 import com.example.tiago.establishmentexample.promotionalListRecycler.PromotioList;
@@ -34,12 +38,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MainActivityRestaurant extends AppCompatActivity {
+public class MainActivityRestaurant extends AppCompatActivity
+        implements DialogFragment.MyDialogFragmentListener, DialogPromotionFragment.MyDialogFragmentListener
+{
     private Drawer result;
     private Toolbar toolbar;
     private FragmentTransaction fragmentTransaction;
     private ProductList mProducts = new ProductList();
     private PromotioList mPromotions = new PromotioList();
+    private List<CartItem> cartItens;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,4 +142,24 @@ public class MainActivityRestaurant extends AppCompatActivity {
         fragmentTransaction.commitAllowingStateLoss();
     }
 
+    @Override
+    public void onReturnFromDialog(CartItem cartItem) {
+        boolean exist = false;
+        if (cartItens == null) {
+            cartItens = new ArrayList<>();
+        }
+
+        for (CartItem item : cartItens) {
+            if (item.product.objectId.equals(cartItem.product.objectId)) {
+                item.quantity += cartItem.quantity;
+                Toast.makeText(this, "Produto Adicionado com Sucesso", Toast.LENGTH_SHORT).show();
+                exist = true;
+            }
+        }
+        if (!exist) {
+            cartItens.add(cartItem);
+            Toast.makeText(this, "Produto Adicionado ao Seu carrinho", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }

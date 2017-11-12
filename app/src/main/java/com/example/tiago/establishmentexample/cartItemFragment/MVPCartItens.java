@@ -22,6 +22,7 @@ public interface MVPCartItens {
     interface PresenterItens{
         void setCartItens(Order order);
         void setView(MVPCartItens.ViewItens view);
+        Context getContext();
         void updateList();
         void postOrder();
     }

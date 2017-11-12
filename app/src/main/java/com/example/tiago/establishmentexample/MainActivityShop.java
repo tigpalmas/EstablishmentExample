@@ -18,6 +18,7 @@ import com.example.tiago.establishmentexample.PerfilFragment.PerfilFragment;
 import com.example.tiago.establishmentexample.cartItemFragment.CartItemFragment;
 import com.example.tiago.establishmentexample.diagoFragment.DialogFragment;
 import com.example.tiago.establishmentexample.diagoFragment.DialogPromotionFragment;
+import com.example.tiago.establishmentexample.diagoFragment.DialogShopItem;
 import com.example.tiago.establishmentexample.domain.CartItem;
 import com.example.tiago.establishmentexample.domain.Order;
 import com.example.tiago.establishmentexample.product.Product;
@@ -36,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivityShop extends AppCompatActivity implements
-        DialogFragment.MyDialogFragmentListener,
+        DialogShopItem.MyDialogFragmentListener,
         DialogPromotionFragment.MyDialogFragmentListener,
         ShopFragment.ProductsFragmentListener,
         RecyclerFragment.PromotionsFragmentListener {
