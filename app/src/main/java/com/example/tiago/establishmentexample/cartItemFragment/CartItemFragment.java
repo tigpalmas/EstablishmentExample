@@ -1,7 +1,9 @@
 package com.example.tiago.establishmentexample.cartItemFragment;
 
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -19,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tiago.establishmentexample.MainActivityRestaurant;
 import com.example.tiago.establishmentexample.R;
 import com.example.tiago.establishmentexample.diagoFragment.DialogAddressFragment;
 import com.example.tiago.establishmentexample.diagoFragment.DialogCreditCartFragment;
@@ -36,6 +39,7 @@ public class CartItemFragment extends Fragment implements MVPCartItens.ViewItens
     public static final String EXTRA_CARTITENS = "extra_cart_itens";
     private MVPCartItens.PresenterItens mPresenter;
     private Order mOrder;
+    private  FloatingActionButton fab;
 
 
     private RecyclerView mRecyclerView;
@@ -141,6 +145,12 @@ public class CartItemFragment extends Fragment implements MVPCartItens.ViewItens
     public void onResume() {
         super.onResume();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Seu Pedido");
+        Activity activity = getActivity();
+        if ( activity instanceof MainActivityRestaurant) {
+            fab = getActivity().findViewById(R.id.fab);
+            fab.setVisibility(View.GONE);
+        }
+
 
     }
 
@@ -154,5 +164,13 @@ public class CartItemFragment extends Fragment implements MVPCartItens.ViewItens
         txtTotal.setText("R$ "+(mOrder.getTotal()+8.0f));
         txtTotalDiscount.setText("economizando R$ "+mOrder.getTotalDiscount());
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(fab!=null){
+            fab.setVisibility(View.VISIBLE);
+        }
     }
 }

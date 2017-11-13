@@ -50,7 +50,7 @@ public class DialogCreditCartFragment extends android.support.v4.app.DialogFragm
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.dialog_orcamento, container, false);
+        View layout = inflater.inflate(R.layout.credit_cart_layout, container, false);
 
 
         return layout;
