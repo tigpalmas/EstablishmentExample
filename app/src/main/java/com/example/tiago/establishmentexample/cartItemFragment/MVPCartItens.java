@@ -25,10 +25,12 @@ public interface MVPCartItens {
         Context getContext();
         void updateList();
         void postOrder();
+        void goBackMainPage();
     }
 
     interface ViewItens{
         void updateList(List<CartItem> itens);
+        void goBackMainPage();
     }
 
 

@@ -52,4 +52,9 @@ public class PresenterCartItens implements MVPCartItens.PresenterItens {
         mOrder.shipping = 8;
         mModel.postOrder(mOrder);
     }
+
+    @Override
+    public void goBackMainPage() {
+        mView.goBackMainPage();
+    }
 }

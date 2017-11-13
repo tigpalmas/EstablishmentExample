@@ -29,6 +29,7 @@ import com.example.tiago.establishmentexample.diagoFragment.DialogFragment;
 import com.example.tiago.establishmentexample.domain.CartItem;
 import com.example.tiago.establishmentexample.domain.Order;
 import com.example.tiago.establishmentexample.promotionalListRecycler.ItemAdapter;
+import com.example.tiago.establishmentexample.shopFragment.BeginShopFragment;
 
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class CartItemFragment extends Fragment implements MVPCartItens.ViewItens
     private MVPCartItens.PresenterItens mPresenter;
     private Order mOrder;
     private  FloatingActionButton fab;
+    private FragmentTransaction fragmentTransaction;
 
 
     private RecyclerView mRecyclerView;
@@ -158,6 +160,18 @@ public class CartItemFragment extends Fragment implements MVPCartItens.ViewItens
     public void updateList(List<CartItem> itens) {
         mAdapter = new CartItemAdapter(this,getContext(), itens);
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void goBackMainPage() {
+        loadFragment(new BeginShopFragment(), "begin");
+    }
+
+    private void loadFragment(Fragment fragment, String tag) {
+        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.container, fragment, tag);
+
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     public void updateValues(){
