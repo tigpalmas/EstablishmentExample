@@ -47,8 +47,8 @@ public class UserFragment extends Fragment {
 
 
         viewPagerCasaDetalheAdapter.addFragments(new UserOrdersFragment(), "Pedidos");
-        viewPagerCasaDetalheAdapter.addFragments(new UserOrdersFragment(), "Pagamento");
-        viewPagerCasaDetalheAdapter.addFragments(new UserOrdersFragment(), "Endereço de entrega");
+        viewPagerCasaDetalheAdapter.addFragments(new UserPaymentFragment(), "Pagamento");
+        viewPagerCasaDetalheAdapter.addFragments(new UserDeliveryFragment(), "Endereço de entrega");
 
         viewPager.setAdapter(viewPagerCasaDetalheAdapter);
         tabLayout.setupWithViewPager(viewPager);

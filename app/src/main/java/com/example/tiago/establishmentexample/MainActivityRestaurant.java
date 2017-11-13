@@ -25,6 +25,7 @@ import com.example.tiago.establishmentexample.product.ProductList;
 import com.example.tiago.establishmentexample.product.ProductsFragment;
 import com.example.tiago.establishmentexample.promotionalListRecycler.PromotioList;
 import com.example.tiago.establishmentexample.promotionalListRecycler.RecyclerFragment;
+import com.example.tiago.establishmentexample.userPerfilFragment.UserFragment;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -44,8 +45,7 @@ import java.util.List;
 import java.util.Random;
 
 public class MainActivityRestaurant extends AppCompatActivity
-        implements DialogFragment.MyDialogFragmentListener, DialogPromotionFragment.MyDialogFragmentListener
-{
+        implements DialogFragment.MyDialogFragmentListener, DialogPromotionFragment.MyDialogFragmentListener {
     private Drawer result;
     private Toolbar toolbar;
     private FragmentTransaction fragmentTransaction;
@@ -59,7 +59,7 @@ public class MainActivityRestaurant extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_restaurant);
         toolbar = (Toolbar) findViewById(R.id.toolbarRestaurant);
-        fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         setSupportActionBar(toolbar);
         loadDrawer();
         ProductsFragment fragment1 = ProductsFragment.novaInstancia(mProducts);
@@ -112,13 +112,10 @@ public class MainActivityRestaurant extends AppCompatActivity
 
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1000).withName("Home").withIcon(R.drawable.ic_home_black_24dp);
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2000).withName("Promoções").withIcon(R.drawable.ic_sale_grey600_36dp);
-        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3000).withName("Cardápio").withIcon(R.drawable.ic_food);;
+        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3000).withName("Cardápio").withIcon(R.drawable.ic_food);
         DividerDrawerItem dividerDrawerItem = new DividerDrawerItem();
-        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4000).withName("Seu Perfil/Pedidos").withIcon(R.drawable.ic_acount).withSubItems(
-                new SecondaryDrawerItem().withName("Seus Pedidos").withLevel(2).withIdentifier(4001),
-                new SecondaryDrawerItem().withName("Seu Perfil").withLevel(2).withIdentifier(4002),
-                new SecondaryDrawerItem().withName("Pagamento").withLevel(2).withIdentifier(4003),
-                new SecondaryDrawerItem().withName("Endereço de entrega").withLevel(2).withIdentifier(4004));
+        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4000).withName("Seu Perfil/Pedidos").withIcon(R.drawable.ic_acount);
+
         PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5000).withName("Sobre").withIcon(R.drawable.ic_about);
 
 
@@ -127,7 +124,7 @@ public class MainActivityRestaurant extends AppCompatActivity
                 .withAccountHeader(headerResult)
                 .withActivity(this)
                 .withToolbar(toolbar)
-                .addDrawerItems( item1, item2, item3, dividerDrawerItem,new SecondaryDrawerItem().withName("Geral").withEnabled(false), item4, item5 )
+                .addDrawerItems(item1, item2, item3, dividerDrawerItem, new SecondaryDrawerItem().withName("Geral").withEnabled(false), item4, item5)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
@@ -145,6 +142,9 @@ public class MainActivityRestaurant extends AppCompatActivity
                             case 3000:
                                 ProductsFragment fragment1 = ProductsFragment.novaInstancia(mProducts);
                                 loadFragment(fragment1, "promotional");
+                                return false;
+                            case 4000:
+                                Toast.makeText(MainActivityRestaurant.this, "Implementar", Toast.LENGTH_SHORT).show();
                                 return false;
 
                         }
@@ -177,6 +177,7 @@ public class MainActivityRestaurant extends AppCompatActivity
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commitAllowingStateLoss();
     }
+
     @Override
     public void onReturnFromDialog(CartItem cartItem) {
         boolean exist = false;
